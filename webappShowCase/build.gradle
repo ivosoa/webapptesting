@@ -1,0 +1,46 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'jetty'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.7
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {  
+  providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+  runtime 'javax.servlet:jstl:1.2'
+  compile 'org.hibernate:hibernate-entitymanager:4.3.6.Final'
+  compile 'org.hsqldb:hsqldb:2.3.2'
+  compile 'org.slf4j:slf4j-api:1.7.7'
+  compile 'com.google.code.gson:gson:2.2.4'
+  compile 'org.codehaus.groovy:groovy-all:2.3.6'
+  testCompile group: 'junit', name: 'junit', version: '4.10'
+}
+
+project.task('buildDirStructure'){
+  File srcFolder = new File(projectDir, 'src/main')
+  new File(srcFolder, 'webapp/META-INF').mkdirs()
+  new File(srcFolder, 'webapp/WEB-INF').mkdirs()
+}
+
+project.task('createPom'){
+  pom{
+    project {
+      groupId 'org.webappshowcase'
+      artifactId 'webappShowCase'
+      version '1.0.0' 
+      
+      inceptionYear '2014'
+      licenses {
+        license {
+          name ''
+          url ''
+          distribution 'repo'
+        }
+      }   
+    }
+  }.writeTo('pom.xml') 
+}
