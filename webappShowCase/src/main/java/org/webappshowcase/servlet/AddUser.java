@@ -1,6 +1,7 @@
 package org.webappshowcase.servlet;
 
 import com.google.gson.Gson;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -31,17 +32,22 @@ public class AddUser extends HttpServlet {
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
     response.setContentType("text/html;charset=UTF-8");
+    StringBuilder sb = new StringBuilder();
     
+    BufferedReader reader = request.getReader();
+    String line = null;
     
-    //TODO: get json Data and transform it in Object User
+    while((line = reader.readLine())!=null){
+      sb.append(line);
+    }
     
-//    Gson gson = new Gson();
-//    User user = gson.fromJson(request.getReader(), User.class);
+    Gson gson = new Gson();
+    User user = gson.fromJson(sb.toString(), User.class);
     
-//    UserDao uDao = new UserDaoImpl();
-//    uDao.begin();
-//    uDao.persist(user);
-//    uDao.commit();
+    UserDao uDao = new UserDaoImpl();
+    uDao.begin();
+    uDao.persist(user);
+    uDao.commit();
     
     try (PrintWriter out = response.getWriter()) {
       /* TODO output your page here. You may use following sample code. */

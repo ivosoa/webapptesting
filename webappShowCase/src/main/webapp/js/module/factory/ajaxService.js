@@ -13,11 +13,12 @@ angular.module("mainModule.factories").factory('ajaxService', function($http) {
     
     //add User(json) to Database
     addUser: function(user) {
+      console.log("user; ", user);
       $http({
         method: 'POST',
         url: addUserUrl,
         data: user,
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        headers: {'Content-Type': 'application/json'}
       });
     }
   };
