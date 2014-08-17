@@ -18,7 +18,13 @@ angular.module("mainModule.controllers").controller("listController", ["$scope",
         $scope.userList = result.data;
       });
     };
-    
+
+    //catch event and update the List accordingly
+    $scope.$on('Form.UserAdded', function(event) {
+      //update the list
+      $scope.getUserList();
+    });
+
     $scope.getUserList();
   }]);
     

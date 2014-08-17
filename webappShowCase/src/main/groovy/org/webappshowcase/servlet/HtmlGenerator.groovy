@@ -20,11 +20,13 @@ class HtmlGenerator {
       head{
         meta(charset:'utf-8')
         title 'Page Title'
+        link(href: 'css/main.css', type:'text/css', rel:'stylesheet')
         script (src: 'js/angular.min.js', type: 'text/javascript')
         script (src: 'js/module/angularModule.js', type: 'text/javascript')
         script (src: 'js/module/controller/listController.js', type: 'text/javascript')
         script (src: 'js/module/controller/contentController.js', type: 'text/javascript')
         script (src: 'js/module/factory/ajaxService.js', type: 'text/javascript')
+        script (src: 'js/module/factory/broadcastService.js', type: 'text/javascript')
       }
       body('ng-app':'mainModule'){
         h1 'Page generated with Groovy'
@@ -35,9 +37,15 @@ class HtmlGenerator {
         }
         div(id:'content', 'ng-controller':'contentController'){
           form('ng-submit':'addUser()'){
+            span 'First Name: '
             input(type:'text', name:'firstName', 'ng-model':'userForm.firstName')
+            br()
+            span 'Last Name: '
             input(type:'text', name:'lastName', 'ng-model':'userForm.lastName')
+            br()
+            span 'Email: '
             input(type:'text', name:'email', 'ng-model':'userForm.email')
+            br()
             input(type:'submit', value:'add')
           }
         }

@@ -1,9 +1,11 @@
-angular.module("mainModule.controllers").controller("contentController", ["$scope", "ajaxService"/*, "docService"*/,
-  function($scope, ajaxService/*, docService*/) {
+angular.module("mainModule.controllers").controller("contentController", ["$scope", "ajaxService", "broadcastService",
+  function($scope, ajaxService, broadcastService) {
     $scope.userForm = {};
 
     $scope.addUser = function() {
-      ajaxService.addUser($scope.userForm);
+      ajaxService.addUser($scope.userForm, function(){
+        broadcastService.updateUserList();
+      });
     };  
   }]);
 
