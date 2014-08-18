@@ -31,8 +31,15 @@ class HtmlGenerator {
       body('ng-app':'mainModule'){
         h1 'Page generated with Groovy'
         div(id:'list', 'ng-controller':'listController'){
-          ul('class':'listElems'){
-            li('ng-repeat':'elem in userList', '{{elem.firstName}}')
+          table('class':'listElems', 'border':'1'){
+            tr('ng-repeat':'elem in userList'){
+              td '{{elem.firstName}}'
+              td '{{elem.lastName}}'
+              td '{{elem.email}}'
+              td{
+                input(type:'button', 'ng-click':'delete(elem.id)', 'value':'delete')
+              }
+            }
           }
         }
         div(id:'content', 'ng-controller':'contentController'){

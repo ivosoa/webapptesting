@@ -1,17 +1,13 @@
 #list{
   float:left;
-  width: 200px;
+  width: 400px;
 }
 
 #content{
-  margin: 0 200px;
+  margin: 0 400px;
   border-left: thick solid #000000;
 }
 
 #content > form{
   margin-left: 10px;
-}
-
-ul.listElems{
-  list-style-type: none;
 }

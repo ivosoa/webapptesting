@@ -5,6 +5,7 @@ angular.module("mainModule.controllers").controller("contentController", ["$scop
     $scope.addUser = function() {
       ajaxService.addUser($scope.userForm, function(){
         broadcastService.updateUserList();
+        $scope.userForm = {};
       });
     };  
   }]);

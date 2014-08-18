@@ -18,6 +18,12 @@ angular.module("mainModule.controllers").controller("listController", ["$scope",
         $scope.userList = result.data;
       });
     };
+    
+    $scope.delete = function(id){
+      ajaxService.deleteUser(id, function(){
+        $scope.getUserList();
+      });
+    };
 
     //catch event and update the List accordingly
     $scope.$on('Form.UserAdded', function(event) {

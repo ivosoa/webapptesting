@@ -25,7 +25,9 @@ public class BasicDaoImpl<E, T> implements BasicDao<E, T> {
 
   @Override
   public void begin() {
-    em.getTransaction().begin();
+    if(!em.getTransaction().isActive()){
+      em.getTransaction().begin();
+    }
   }
 
   @Override
