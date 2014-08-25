@@ -51,10 +51,9 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.hsqldb</groupId>
-      <artifactId>hsqldb</artifactId>
-      <version>2.3.2</version>
-      <scope>compile</scope>
+      <groupId>org.apache.derby</groupId>
+      <artifactId>derbyclient</artifactId>
+      <version>10.10.2.0</version>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>

@@ -32,7 +32,7 @@ class HtmlGenerator {
         h1 'Page generated with Groovy'
         div(id:'list', 'ng-controller':'listController'){
           table('class':'listElems', 'border':'1'){
-            tr('ng-repeat':'elem in userList'){
+            tr('ng-repeat':'elem in userList', 'ng-click':'selectUser(elem)', 'ng-class':'{active : isSelected(elem.id)}'){
               td '{{elem.firstName}}'
               td '{{elem.lastName}}'
               td '{{elem.email}}'
@@ -44,16 +44,21 @@ class HtmlGenerator {
         }
         div(id:'content', 'ng-controller':'contentController'){
           form('ng-submit':'addUser()'){
-            span 'First Name: '
-            input(type:'text', name:'firstName', 'ng-model':'userForm.firstName')
-            br()
-            span 'Last Name: '
-            input(type:'text', name:'lastName', 'ng-model':'userForm.lastName')
-            br()
-            span 'Email: '
-            input(type:'text', name:'email', 'ng-model':'userForm.email')
-            br()
-            input(type:'submit', value:'add')
+            div(id:'box'){
+              label{
+                span 'First Name: '
+                input(type:'text', 'class':'textInput' , name:'firstName', 'ng-model':'userForm.firstName')
+              }
+              label{
+                span 'Last Name: '
+                input(type:'text', 'class':'textInput', name:'lastName', 'ng-model':'userForm.lastName')
+              }
+              label{
+                span 'Email: '
+                input(type:'text', 'class':'textInput', name:'email', 'ng-model':'userForm.email')
+              }
+              input(type:'submit', 'class':'buttonInput', value:'add')
+            }
           }
         }
       }

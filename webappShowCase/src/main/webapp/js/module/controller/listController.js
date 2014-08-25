@@ -12,18 +12,36 @@ angular.module("mainModule.controllers").controller("listController", ["$scope",
 
     //UserList initialization
     $scope.userList = [];
+    $scope.selected;
 
     $scope.getUserList = function() {
       ajaxService.getUserList().then(function(result) {
         $scope.userList = result.data;
       });
     };
-    
-    $scope.delete = function(id){
-      ajaxService.deleteUser(id, function(){
+
+    $scope.selectUser = function(elem) {
+      //select 
+      if ($scope.selected !== elem.id) {
+        $scope.selected = elem.id;
+      }
+      //deselect
+      else{
+        $scope.selected = '';
+      }
+    };
+
+    $scope.delete = function(id) {
+      ajaxService.deleteUser(id, function() {
         $scope.getUserList();
       });
     };
+
+    //used by the list for styling
+    $scope.isSelected = function(id) {
+      return $scope.selected === id;
+    };
+
 
     //catch event and update the List accordingly
     $scope.$on('Form.UserAdded', function(event) {

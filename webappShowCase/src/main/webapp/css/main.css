@@ -8,6 +8,35 @@
   border-left: thick solid #000000;
 }
 
+.active {
+  background-color: lightblue;
+}
+
 #content > form{
   margin-left: 10px;
+}
+div#box {
+  width:500px;
+  border:1px solid;
+}
+div#box label {
+  width:100%;
+  display: block;
+}
+div#box label span {
+  display: block;
+  float:left;
+  width:100px;
+  text-align:right;
+  padding:5px 20px 0 0;
+}
+
+div#box input.textInput {
+  padding:5px 5px;
+  width:200px;
+}
+div#box input.buttonInput {
+  margin: 5px 0 5px 122px;
+  padding: 5px 7px;
+  width:100px;
 }

@@ -15,7 +15,7 @@ public class ManagerUtil {
   private static ThreadLocal<EntityManager> threadLocal;
 
   static {
-    emf = Persistence.createEntityManagerFactory("sample");
+    emf = Persistence.createEntityManagerFactory("webappsample");
     threadLocal = new ThreadLocal<EntityManager>();
   }
 
