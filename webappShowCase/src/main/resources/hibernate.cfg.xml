@@ -2,13 +2,12 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="hibernate.connection.url">jdbc:hsqldb:file:./database/sample;shutdown=true</property>
-    <property name="hibernate.connection.username">sa</property>
-    <property name="hibernate.connection.password"/>
-    <property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
-    <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
+    <property name="hibernate.connection.url">jdbc:derby://localhost:1527/webappsample;create=true</property>
+    <property name="hibernate.connection.username">webappsample</property>
+    <property name="hibernate.connection.password">webappsample</property>
+    <property name="hibernate.connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.DerbyTenSevenDialect</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="hibernate.show_sql">true</property>
   </session-factory>
 </hibernate-configuration>
-
