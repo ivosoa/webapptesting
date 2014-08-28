@@ -32,15 +32,17 @@ public class UserList extends HttpServlet {
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
     response.setContentType("text/html;charset=UTF-8");
-    UserDao uDao = new UserDaoImpl();
-    uDao.begin();    
-    List<User> userList = uDao.findAll();
-    uDao.commit();
-    
+
+    UserDao userDao = new UserDaoImpl();
+
+    userDao.begin();
+    List<User> userList = userDao.findAll();
+    userDao.commit();
+
     Gson gson = new Gson();
-    
+
     String result = gson.toJson(userList);
-    
+
     try (PrintWriter out = response.getWriter()) {
       out.println(result);
     }
@@ -72,7 +74,7 @@ public class UserList extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    processRequest(request, response);
+    //processRequest(request, response);
   }
 
   /**
@@ -84,5 +86,4 @@ public class UserList extends HttpServlet {
   public String getServletInfo() {
     return "Short description";
   }// </editor-fold>
-
 }

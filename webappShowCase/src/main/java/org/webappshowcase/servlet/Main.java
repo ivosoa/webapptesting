@@ -7,9 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.webappshowcase.db.dao.UserDao;
-import org.webappshowcase.db.dao.UserDaoImpl;
-import org.webappshowcase.db.entities.User;
 
 /**
  *
@@ -17,7 +14,6 @@ import org.webappshowcase.db.entities.User;
  */
 @WebServlet(name="main", urlPatterns= {"/index.html", "/main"})
 public class Main extends HttpServlet {
-
   /**
    * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
    * methods.
@@ -76,5 +72,5 @@ public class Main extends HttpServlet {
   public String getServletInfo() {
     return "Short description";
   }// </editor-fold>
-
+  
 }

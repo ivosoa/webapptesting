@@ -23,7 +23,6 @@ import org.webappshowcase.db.entities.User;
  */
 @WebServlet(name = "DeleteUser", urlPatterns = {"/deleteUser"})
 public class DeleteUser extends HttpServlet {
-
   /**
    * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
    * methods.
@@ -36,19 +35,18 @@ public class DeleteUser extends HttpServlet {
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
     response.setContentType("text/html;charset=UTF-8");
-    System.out.println("ID_ "+request.getParameter("id"));
     String id = request.getParameter("id");
     
-    UserDao uDao = new UserDaoImpl();
-    uDao.begin();
-    User user = uDao.findById(Long.parseLong(id));
-    uDao.commit();
+    //fetch user from Database
+    UserDao userDao = new UserDaoImpl();
+    userDao.begin();
+    User user = userDao.findById(Long.parseLong(id));
+    userDao.commit();
     
-    System.out.println("firstName: "+user.getFirstName());
-    
-    uDao.begin();
-    uDao.delete(user);
-    uDao.commit();
+    //delete fetched User from DB
+    userDao.begin();
+    userDao.delete(user);
+    userDao.commit();
     
     try (PrintWriter out = response.getWriter()) {
       /* TODO output your page here. You may use following sample code. */
@@ -76,7 +74,7 @@ public class DeleteUser extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    processRequest(request, response);
+    //processRequest(request, response);
   }
 
   /**

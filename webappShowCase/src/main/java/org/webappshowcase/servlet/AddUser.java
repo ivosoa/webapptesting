@@ -19,7 +19,6 @@ import org.webappshowcase.db.entities.User;
  */
 @WebServlet(name = "AddUser", urlPatterns = {"/addUser"})
 public class AddUser extends HttpServlet {
-
   /**
    * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
    * methods.
@@ -44,10 +43,10 @@ public class AddUser extends HttpServlet {
     Gson gson = new Gson();
     User user = gson.fromJson(sb.toString(), User.class);
     
-    UserDao uDao = new UserDaoImpl();
-    uDao.begin();
-    uDao.persist(user);
-    uDao.commit();
+    UserDao userDao = new UserDaoImpl();
+    userDao.begin();
+    userDao.persist(user);
+    userDao.commit();
     
     try (PrintWriter out = response.getWriter()) {
       /* TODO output your page here. You may use following sample code. */
@@ -75,7 +74,7 @@ public class AddUser extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    processRequest(request, response);
+    //processRequest(request, response);
   }
 
   /**
@@ -101,5 +100,5 @@ public class AddUser extends HttpServlet {
   public String getServletInfo() {
     return "Short description";
   }// </editor-fold>
-
+  
 }
